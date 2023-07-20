@@ -7,8 +7,9 @@
 #include <windows.h>
 #include <stdbool.h>
 
-/* by Nicolle Ramos - Pet's & Pet's
-Sistema de cadastro para Banho & Tosa de pet + loja
+/* 
+by Nicolle Ramos Batista
+Sistema de gerenciamento de Petshop
 */
 
 typedef struct {
@@ -112,7 +113,7 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 		printf("[3] Banho Antiparasitas\n");
 		printf("[0] Voltar \n");
 		printf("==========================\n");
-		printf("digite a opÁ„o:");
+		printf("digite a op√ß√£o:");
 		scanf("%d", &escolha);
 
 		switch(escolha) {
@@ -123,7 +124,7 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 				printf("2. FICHA DO PET(Banho Regular)\n");
 				printf("Digite o seu nome(dono do PET!): ");
 				scanf(" %[^\n]", clientes->nome);
-				printf("Digite o seu endereÁo: ");
+				printf("Digite o seu endere√ßo: ");
 				scanf(" %[^\n]", clientes->end);
 				getchar();
 				printf("Digite o seu telefone de contato: ");
@@ -136,7 +137,7 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 
 				do {
 
-					printf("Porte do seu PET: [1] Pequeno [2] MÈdio [3] Grande \nopÁao:");
+					printf("Porte do seu PET: [1] Pequeno [2] M√©dio [3] Grande \nop√ßao:");
 					scanf("%d", &porte);
 
 					if(porte==1) {
@@ -152,7 +153,7 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 					}
 
 					else {
-						printf("\033[31mDigite uma opÁ„o v·lida!\033[0m\n");
+						printf("\033[31mDigite uma op√ß√£o v√°lida!\033[0m\n");
 						Sleep(1000);
 					}
 
@@ -170,12 +171,12 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 						if (dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12 && ano >= 0 && ano <= 9999) {
 							if (ano > anoAtual || (ano == anoAtual && mes > mesAtual) || (ano == anoAtual && mes == mesAtual && dia >= diaAtual)) {
 								if ((mes == 4 || mes == 6 || mes == 9 || mes == 11) && dia > 30) {
-									printf("\033[31mDia inv·lido para o mÍs informado. Tente novamente!\033[0m\n");
+									printf("\033[31mDia inv√°lido para o m√™s informado. Tente novamente!\033[0m\n");
 									Sleep(1000);
 								} else if (mes == 2) {
 									int bissexto = (ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0);
 									if ((bissexto && dia > 29) || (!bissexto && dia > 28)) {
-										printf("\033[31mDia inv·lido para o mÍs e ano informados. Tente novamente!\033[0m\n");
+										printf("\033[31mDia inv√°lido para o m√™s e ano informados. Tente novamente!\033[0m\n");
 										Sleep(1000);
 									} else {
 										dataValida = 1;
@@ -184,21 +185,21 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 									dataValida = 1;
 								}
 							} else {
-								printf("\033[31mDigite uma data v·lida!\033[0m\n");
+								printf("\033[31mDigite uma data v√°lida!\033[0m\n");
 								Sleep(1000);
 							}
 						} else {
-							printf("\033[31mDigite uma data v·lida!\033[0m\n");
+							printf("\033[31mDigite uma data v√°lida!\033[0m\n");
 							Sleep(1000);
 						}
 					} else {
-						printf("\033[31mFormato de data inv·lido! Tente novamente\033[0m\n");
+						printf("\033[31mFormato de data inv√°lido! Tente novamente\033[0m\n");
 						Sleep(1000);
 					}
 				} while (!dataValida);
 
 				do {
-					printf("Hor·rios disponÌveis: [1] ‡s 1h [2] ‡s 2h [3] ‡s 3h [4] ‡s 4h  \nopÁ„o:");
+					printf("Hor√°rios dispon√≠veis: [1] √†s 1h [2] √†s 2h [3] √†s 3h [4] √†s 4h  \nop√ß√£o:");
 					scanf("%d", &horario);
 
 					if(horario==1) {
@@ -218,7 +219,7 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 				} while(horario != 1 && horario != 2 && horario != 3 && horario != 4);
 
 				do {
-					printf("Forma de pagamento: [1] dinheiro [2] crÈdito [3] dÈbito [4] pix  \nopÁ„o:");
+					printf("Forma de pagamento: [1] dinheiro [2] cr√©dito [3] d√©bito [4] pix  \nop√ß√£o:");
 					scanf("%d", &formaPagamento);
 
 					if (formaPagamento >= 1 && formaPagamento <= 4) {
@@ -226,28 +227,28 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 						Sleep(2000);
 						break;
 					} else {
-						printf("\033[31mDigite uma opÁ„o v·lida!\033[0m\n");
+						printf("\033[31mDigite uma op√ß√£o v√°lida!\033[0m\n");
 					}
 				} while (1);
 
 				clearScreen();
-				printf("4. INFORMA«’ES DO BANHO!\n");
+				printf("4. INFORMA√á√ïES DO BANHO!\n");
 				printf("Nome do Cliente : %s\n", clientes->nome);
 				printf("Nome do Pet : %s\n", cachorro->nome);
-				printf("EndereÁo : %s\n", clientes->end);
+				printf("Endere√ßo : %s\n", clientes->end);
 				printf("Telefone de Contato: %s\n", clientes->tel);
 				printf("Tipo de Banho: Banho Regular | Valor: R$ %.2f\n", ValorTotal);
-				printf("Marcado para o dia: %02d/%02d/%04d ‡s %02dh.\n\n", dia, mes, ano, horario);
-				printf("-> Confirma as seguintes informaÁıe? [s/n]:");
+				printf("Marcado para o dia: %02d/%02d/%04d √†s %02dh.\n\n", dia, mes, ano, horario);
+				printf("-> Confirma as seguintes informa√ß√µe? [s/n]:");
 				scanf(" %c",&confirmacao);
 
 				if(confirmacao=='s' || confirmacao=='S') {
-					printf("\033[38;5;208mObrigado por agendar!! Temos opÁıes de entrega a domicÌlio \nou retirada na loja, entraremos em contato.\033[0m\n");
+					printf("\033[38;5;208mObrigado por agendar!! Temos op√ß√µes de entrega a domic√≠lio \nou retirada na loja, entraremos em contato.\033[0m\n");
 					Sleep(8000);
 					clearScreen();
 					return;
 				} else if(confirmacao=='n' || confirmacao=='N') {
-					printf("\033[31mInformaÁıes excluÌdas com sucesso!\033[0m\n");
+					printf("\033[31mInforma√ß√µes exclu√≠das com sucesso!\033[0m\n");
 					Sleep(8000);
 					clearScreen();
 					return;
@@ -260,7 +261,7 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 				printf("2. FICHA DO PET(Banho Hidratante)\n");
 				printf("Digite o seu nome(dono do PET!): ");
 				scanf(" %[^\n]", clientes->nome);
-				printf("Digite o seu endereÁo: ");
+				printf("Digite o seu endere√ßo: ");
 				scanf(" %[^\n]", clientes->end);
 				getchar();
 				printf("Digite o seu telefone de contato: ");
@@ -272,7 +273,7 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 
 				do {
 
-					printf("Porte do seu PET: [1] Pequeno [2] MÈdio [3] Grande \nopÁao:");
+					printf("Porte do seu PET: [1] Pequeno [2] M√©dio [3] Grande \nop√ßao:");
 					scanf("%d", &porte);
 
 					if(porte==1) {
@@ -288,7 +289,7 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 					}
 
 					else {
-						printf("\033[31mDigite uma opÁ„o v·lida!\033[0m\n");
+						printf("\033[31mDigite uma op√ß√£o v√°lida!\033[0m\n");
 						Sleep(1000);
 					}
 
@@ -306,12 +307,12 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 						if (dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12 && ano >= 0 && ano <= 9999) {
 							if (ano > anoAtual || (ano == anoAtual && mes > mesAtual) || (ano == anoAtual && mes == mesAtual && dia >= diaAtual)) {
 								if ((mes == 4 || mes == 6 || mes == 9 || mes == 11) && dia > 30) {
-									printf("\033[31mDia inv·lido para o mÍs informado. Tente novamente!\033[0m\n");
+									printf("\033[31mDia inv√°lido para o m√™s informado. Tente novamente!\033[0m\n");
 									Sleep(1000);
 								} else if (mes == 2) {
 									int bissexto = (ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0);
 									if ((bissexto && dia > 29) || (!bissexto && dia > 28)) {
-										printf("\033[31mDia inv·lido para o mÍs e ano informados. Tente novamente!\033[0m\n");
+										printf("\033[31mDia inv√°lido para o m√™s e ano informados. Tente novamente!\033[0m\n");
 										Sleep(1000);
 									} else {
 										dataValida = 1;
@@ -320,21 +321,21 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 									dataValida = 1;
 								}
 							} else {
-								printf("\033[31mDigite uma data v·lida!\033[0m\n");
+								printf("\033[31mDigite uma data v√°lida!\033[0m\n");
 								Sleep(1000);
 							}
 						} else {
-							printf("\033[31mDigite uma data v·lida!\033[0m\n");
+							printf("\033[31mDigite uma data v√°lida!\033[0m\n");
 							Sleep(1000);
 						}
 					} else {
-						printf("\033[31mFormato de data inv·lido! Tente novamente\033[0m\n");
+						printf("\033[31mFormato de data inv√°lido! Tente novamente\033[0m\n");
 						Sleep(1000);
 					}
 				} while (!dataValida);
 
 				do {
-					printf("Hor·rios disponÌveis: [1] ‡s 1h [2] ‡s 2h [3] ‡s 3h [4] ‡s 4h  \nopÁ„o:");
+					printf("Hor√°rios dispon√≠veis: [1] √†s 1h [2] √†s 2h [3] √†s 3h [4] √†s 4h  \nop√ß√£o:");
 					scanf("%d", &horario);
 
 					if(horario==1) {
@@ -354,7 +355,7 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 				} while(horario != 1 && horario != 2 && horario != 3 && horario != 4);
 
 				do {
-					printf("Forma de pagamento: [1] dinheiro [2] crÈdito [3] dÈbito [4] pix  \nopÁ„o:");
+					printf("Forma de pagamento: [1] dinheiro [2] cr√©dito [3] d√©bito [4] pix  \nop√ß√£o:");
 					scanf("%d", &formaPagamento);
 
 					if (formaPagamento >= 1 && formaPagamento <= 4) {
@@ -362,28 +363,28 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 						Sleep(2000);
 						break;
 					} else {
-						printf("\033[31mDigite uma opÁ„o v·lida!\033[0m\n");
+						printf("\033[31mDigite uma op√ß√£o v√°lida!\033[0m\n");
 					}
 				} while (1);
 
 				clearScreen();
-				printf("4. INFORMA«’ES DO BANHO!\n");
+				printf("4. INFORMA√á√ïES DO BANHO!\n");
 				printf("Nome do Cliente : %s\n", clientes->nome);
 				printf("Nome do Pet : %s\n", cachorro->nome);
-				printf("EndereÁo : %s\n", clientes->end);
+				printf("Endere√ßo : %s\n", clientes->end);
 				printf("Telefone de Contato: %s\n", clientes->tel);
 				printf("Tipo de Banho: Banho Hidratante | Valor: R$ %.2f\n", ValorTotal);
-				printf("Marcado para o dia: %02d/%02d/%04d ‡s %02dh.\n\n", dia, mes, ano, horario);
-				printf("-> Confirma as seguintes informaÁıe? [s/n]:");
+				printf("Marcado para o dia: %02d/%02d/%04d √†s %02dh.\n\n", dia, mes, ano, horario);
+				printf("-> Confirma as seguintes informa√ß√µe? [s/n]:");
 				scanf(" %c",&confirmacao);
 
 				if(confirmacao=='s' || confirmacao=='S') {
-					printf("\033[38;5;208mObrigado por agendar!! Temos opÁıes de entrega a domicÌlio \nou retirada na loja, entraremos em contato.\033[0m\n");
+					printf("\033[38;5;208mObrigado por agendar!! Temos op√ß√µes de entrega a domic√≠lio \nou retirada na loja, entraremos em contato.\033[0m\n");
 					Sleep(8000);
 					clearScreen();
 					return;
 				} else if(confirmacao=='n' || confirmacao=='N') {
-					printf("\033[31mInformaÁıes excluÌdas com sucesso!\033[0m\n");
+					printf("\033[31mInforma√ß√µes exclu√≠das com sucesso!\033[0m\n");
 					Sleep(8000);
 					clearScreen();
 					return;
@@ -399,7 +400,7 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 				printf("2. FICHA DO PET(Banho Antiparasitas)\n");
 				printf("Digite o seu nome(dono do PET!): ");
 				scanf(" %[^\n]", clientes->nome);
-				printf("Digite o seu endereÁo: ");
+				printf("Digite o seu endere√ßo: ");
 				scanf(" %[^\n]", clientes->end);
 				getchar();
 				printf("Digite o seu telefone de contato: ");
@@ -412,7 +413,7 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 
 				do {
 
-					printf("Porte do seu PET: [1] Pequeno [2] MÈdio [3] Grande \nopÁao:");
+					printf("Porte do seu PET: [1] Pequeno [2] M√©dio [3] Grande \nop√ßao:");
 					scanf("%d", &porte);
 
 					if(porte==1) {
@@ -428,7 +429,7 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 					}
 
 					else {
-						printf("\033[31mDigite uma opÁ„o v·lida!\033[0m\n");
+						printf("\033[31mDigite uma op√ß√£o v√°lida!\033[0m\n");
 						Sleep(1000);
 					}
 
@@ -446,12 +447,12 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 						if (dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12 && ano >= 0 && ano <= 9999) {
 							if (ano > anoAtual || (ano == anoAtual && mes > mesAtual) || (ano == anoAtual && mes == mesAtual && dia >= diaAtual)) {
 								if ((mes == 4 || mes == 6 || mes == 9 || mes == 11) && dia > 30) {
-									printf("\033[31mDia inv·lido para o mÍs informado. Tente novamente!\033[0m\n");
+									printf("\033[31mDia inv√°lido para o m√™s informado. Tente novamente!\033[0m\n");
 									Sleep(1000);
 								} else if (mes == 2) {
 									int bissexto = (ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0);
 									if ((bissexto && dia > 29) || (!bissexto && dia > 28)) {
-										printf("\033[31mDia inv·lido para o mÍs e ano informados. Tente novamente!\033[0m\n");
+										printf("\033[31mDia inv√°lido para o m√™s e ano informados. Tente novamente!\033[0m\n");
 										Sleep(1000);
 									} else {
 										dataValida = 1;
@@ -460,21 +461,21 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 									dataValida = 1;
 								}
 							} else {
-								printf("\033[31mDigite uma data v·lida!\033[0m\n");
+								printf("\033[31mDigite uma data v√°lida!\033[0m\n");
 								Sleep(1000);
 							}
 						} else {
-							printf("\033[31mDigite uma data v·lida!\033[0m\n");
+							printf("\033[31mDigite uma data v√°lida!\033[0m\n");
 							Sleep(1000);
 						}
 					} else {
-						printf("\033[31mFormato de data inv·lido! Tente novamente\033[0m\n");
+						printf("\033[31mFormato de data inv√°lido! Tente novamente\033[0m\n");
 						Sleep(1000);
 					}
 				} while (!dataValida);
 
 				do {
-					printf("Hor·rios disponÌveis: [1] ‡s 1h [2] ‡s 2h [3] ‡s 3h [4] ‡s 4h  \nopÁ„o:");
+					printf("Hor√°rios dispon√≠veis: [1] √†s 1h [2] √†s 2h [3] √†s 3h [4] √†s 4h  \nop√ß√£o:");
 					scanf("%d", &horario);
 
 					if(horario==1) {
@@ -494,7 +495,7 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 				} while(horario != 1 && horario != 2 && horario != 3 && horario != 4);
 
 				do {
-					printf("Forma de pagamento: [1] dinheiro [2] crÈdito [3] dÈbito [4] pix  \nopÁ„o:");
+					printf("Forma de pagamento: [1] dinheiro [2] cr√©dito [3] d√©bito [4] pix  \nop√ß√£o:");
 					scanf("%d", &formaPagamento);
 
 					if (formaPagamento >= 1 && formaPagamento <= 4) {
@@ -502,28 +503,28 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 						Sleep(2000);
 						break;
 					} else {
-						printf("\033[31mDigite uma opÁ„o v·lida!\033[0m\n");
+						printf("\033[31mDigite uma op√ß√£o v√°lida!\033[0m\n");
 					}
 				} while (1);
 
 				clearScreen();
-				printf("4. INFORMA«’ES DO BANHO!\n");
+				printf("4. INFORMA√á√ïES DO BANHO!\n");
 				printf("Nome do Cliente : %s\n", clientes->nome);
 				printf("Nome do Pet : %s\n", cachorro->nome);
-				printf("EndereÁo : %s\n", clientes->end);
+				printf("Endere√ßo : %s\n", clientes->end);
 				printf("Telefone de Contato: %s\n", clientes->tel);
 				printf("Tipo de Banho: Banho Antiparasitas | Valor: R$ %.2f\n", ValorTotal);
-				printf("Marcado para o dia: %02d/%02d/%04d ‡s %02dh.\n\n", dia, mes, ano, horario);
-				printf("-> Confirma as seguintes informaÁıe? [s/n]:");
+				printf("Marcado para o dia: %02d/%02d/%04d √†s %02dh.\n\n", dia, mes, ano, horario);
+				printf("-> Confirma as seguintes informa√ß√µe? [s/n]:");
 				scanf(" %c",&confirmacao);
 
 				if(confirmacao=='s' || confirmacao=='S') {
-					printf("\033[38;5;208mObrigado por agendar!! Temos opÁıes de entrega a domicÌlio \nou retirada na loja, entraremos em contato.\033[0m\n");
+					printf("\033[38;5;208mObrigado por agendar!! Temos op√ß√µes de entrega a domic√≠lio \nou retirada na loja, entraremos em contato.\033[0m\n");
 					Sleep(8000);
 					clearScreen();
 					return;
 				} else if(confirmacao=='n' || confirmacao=='N') {
-					printf("\033[31mInformaÁıes excluÌdas com sucesso!\033[0m\n");
+					printf("\033[31mInforma√ß√µes exclu√≠das com sucesso!\033[0m\n");
 					Sleep(8000);
 					clearScreen();
 					return;
@@ -536,7 +537,7 @@ void agendarBanho(Cliente* clientes, Pet* cachorro) {
 				break;
 
 			default:
-				printf("\n\033[31mDigite uma opÁ„o v·lida!\033[0m\n\n");
+				printf("\n\033[31mDigite uma op√ß√£o v√°lida!\033[0m\n\n");
 
 		}
 
@@ -564,13 +565,13 @@ void agendarCheckup(Cliente* clientes, Pet* cachorro) {
 
 	do {
 		clearScreen();
-		printf("1. CHECK-UP VETERIN¡RIO\n");
+		printf("1. CHECK-UP VETERIN√ÅRIO\n");
 		printf("==========================\n");
 		printf("[1] Agendar consulta\n");
 		printf("[2] Sobre\n");
 		printf("[0] Voltar \n");
 		printf("==========================\n");
-		printf("digite a opÁ„o:");
+		printf("digite a op√ß√£o:");
 		scanf("%d", &escolha);
 
 		switch(escolha) {
@@ -581,7 +582,7 @@ void agendarCheckup(Cliente* clientes, Pet* cachorro) {
 				printf("2. FICHA DO PET!\n");
 				printf("Digite o seu nome(dono do PET!): ");
 				scanf(" %[^\n]", clientes->nome);
-				printf("Digite o seu endereÁo: ");
+				printf("Digite o seu endere√ßo: ");
 				scanf(" %[^\n]", clientes->end);
 				getchar();
 				printf("Digite o seu telefone de contato: ");
@@ -598,12 +599,12 @@ void agendarCheckup(Cliente* clientes, Pet* cachorro) {
 						if (dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12 && ano >= 0 && ano <= 9999) {
 							if (ano > anoAtual || (ano == anoAtual && mes > mesAtual) || (ano == anoAtual && mes == mesAtual && dia >= diaAtual)) {
 								if ((mes == 4 || mes == 6 || mes == 9 || mes == 11) && dia > 30) {
-									printf("\033[31mDia inv·lido para o mÍs informado. Tente novamente!\033[0m\n");
+									printf("\033[31mDia inv√°lido para o m√™s informado. Tente novamente!\033[0m\n");
 									Sleep(1000);
 								} else if (mes == 2) {
 									int bissexto = (ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0);
 									if ((bissexto && dia > 29) || (!bissexto && dia > 28)) {
-										printf("\033[31mDia inv·lido para o mÍs e ano informados. Tente novamente!\033[0m\n");
+										printf("\033[31mDia inv√°lido para o m√™s e ano informados. Tente novamente!\033[0m\n");
 										Sleep(1000);
 									} else {
 										dataValida = 1;
@@ -612,21 +613,21 @@ void agendarCheckup(Cliente* clientes, Pet* cachorro) {
 									dataValida = 1;
 								}
 							} else {
-								printf("\033[31mDigite uma data v·lida!\033[0m\n");
+								printf("\033[31mDigite uma data v√°lida!\033[0m\n");
 								Sleep(1000);
 							}
 						} else {
-							printf("\033[31mDigite uma data v·lida!\033[0m\n");
+							printf("\033[31mDigite uma data v√°lida!\033[0m\n");
 							Sleep(1000);
 						}
 					} else {
-						printf("\033[31mFormato de data inv·lido! Tente novamente\033[0m\n");
+						printf("\033[31mFormato de data inv√°lido! Tente novamente\033[0m\n");
 						Sleep(1000);
 					}
 				} while (!dataValida);
 
 				do {
-					printf("Hor·rios disponÌveis [1] ‡s 13h [2] ‡s 14h [3] ‡s 15h [4] ‡s 16h\nopÁ„o:");
+					printf("Hor√°rios dispon√≠veis [1] √†s 13h [2] √†s 14h [3] √†s 15h [4] √†s 16h\nop√ß√£o:");
 					scanf("%d", &horario);
 
 					if(horario==1) {
@@ -644,32 +645,32 @@ void agendarCheckup(Cliente* clientes, Pet* cachorro) {
 
 				} while(horario != 1 && horario != 2 && horario != 3 && horario != 4);
 
-				printf("Forma de pagamento: [1] dinheiro [2] crÈdito [3] dÈbito [4] pix \nopÁ„o:");
+				printf("Forma de pagamento: [1] dinheiro [2] cr√©dito [3] d√©bito [4] pix \nop√ß√£o:");
 				scanf("%d",&formaPagamento);
 
 				printf("\033[32mSalvo com sucesso!\033[0m\n");
 				Sleep(2000);
 
 				clearScreen();
-				printf("3. INFORMA«’ES GERAIS:\n");
+				printf("3. INFORMA√á√ïES GERAIS:\n");
 				printf("Nome do Cliente : %s\n", clientes->nome);
 				printf("Nome do Pet : %s\n", cachorro->nome);
-				printf("EndereÁo : %s\n", clientes->end);
+				printf("Endere√ßo : %s\n", clientes->end);
 				printf("Telefone de Contato: %s\n", clientes->tel);
 				printf("Tipo de Consulta: Check-up | Valor: R$ 50,00\n");
-				printf("Marcado para o dia: %02d/%02d/%04d ‡s %02dh.\n\n", dia, mes, ano, horario);
+				printf("Marcado para o dia: %02d/%02d/%04d √†s %02dh.\n\n", dia, mes, ano, horario);
 
 
-				printf("Confirma as seguintes informaÁıe? [s/n] ");
+				printf("Confirma as seguintes informa√ß√µe? [s/n] ");
 				scanf(" %c",&confirmacao);
 
 				if(confirmacao=='s' || confirmacao=='S') {
-					printf("\033[38;5;208mObrigado por agendar! Qualquer custo adicional ser· informado apÛs a consulta, \npedimos gentilmente que n„o esqueÁa de levar a carteirinha do seu animalzinho.\033[0m\n");
+					printf("\033[38;5;208mObrigado por agendar! Qualquer custo adicional ser√° informado ap√≥s a consulta, \npedimos gentilmente que n√£o esque√ßa de levar a carteirinha do seu animalzinho.\033[0m\n");
 					Sleep(8000);
 					clearScreen();
 					return;
 				} else if(confirmacao=='n' || confirmacao=='N') {
-					printf("\033[31mInformaÁıes apagadas por seguranÁa!\033[0m\n");
+					printf("\033[31mInforma√ß√µes apagadas por seguran√ßa!\033[0m\n");
 					Sleep(8000);
 					clearScreen();
 					return;
@@ -678,8 +679,8 @@ void agendarCheckup(Cliente* clientes, Pet* cachorro) {
 			case 2:
 
 				clearScreen();
-				printf("\033[1;34mCHECK-UP VETERIN¡RIO:\033[0m\n");
-				printf("Por que recomendamos fazer um check-up veterin·rio? \n… importante ressaltar que o check-up do seu bichinho de estimaÁ„o n„o È obrigatÛrio. \nNo entanto, conhecer o seu pet nos ajuda a criar e fornecer um banho de qualidade, sem \ncausar danos a ele ou inconveniÍncias para vocÍ. O check-up r·pido consiste em atender\nas preferÍncias e prioridades do seu bichinho!\n");
+				printf("\033[1;34mCHECK-UP VETERIN√ÅRIO:\033[0m\n");
+				printf("Por que recomendamos fazer um check-up veterin√°rio? \n√â importante ressaltar que o check-up do seu bichinho de estima√ß√£o n√£o √© obrigat√≥rio. \nNo entanto, conhecer o seu pet nos ajuda a criar e fornecer um banho de qualidade, sem \ncausar danos a ele ou inconveni√™ncias para voc√™. O check-up r√°pido consiste em atender\nas prefer√™ncias e prioridades do seu bichinho!\n");
 				printf("\033[1;34mAperte ENTER para continuar!\033[0m\n");
 				getch();
 				break;
@@ -690,7 +691,7 @@ void agendarCheckup(Cliente* clientes, Pet* cachorro) {
 				break;
 
 			default:
-				printf("\n\033[31mDigite uma opÁ„o v·lida!\033[0m\n\n");
+				printf("\n\033[31mDigite uma op√ß√£o v√°lida!\033[0m\n\n");
 		}
 	} while(escolha);
 }
@@ -719,11 +720,11 @@ void lojaPet() {
 	produtos[3].preco = 10.35;
 
 	produtos[4].id = 5;
-	strcpy(produtos[4].nome, "AcessÛrios para secagem");
+	strcpy(produtos[4].nome, "Acess√≥rios para secagem");
 	produtos[4].preco = 40.89;
 
 	produtos[5].id = 6;
-	strcpy(produtos[5].nome, "LenÁos umedecidos");
+	strcpy(produtos[5].nome, "Len√ßos umedecidos");
 	produtos[5].preco = 6.00;
 
 	produtos[6].id = 7;
@@ -739,12 +740,12 @@ void lojaPet() {
 	produtos[8].preco = 20.75;
 
 	produtos[9].id = 10;
-	strcpy(produtos[9].nome, "T·buas de corte de unhas");
+	strcpy(produtos[9].nome, "T√°buas de corte de unhas");
 	produtos[9].preco = 9.56;
 
 	printf("PRODUTOS PARA O SEU PET!\n");
 	for (int i = 0; i < 10; i++) {
-		printf("id: %d * %s * preÁo: R$ %.2f\n", produtos[i].id, produtos[i].nome, produtos[i].preco);
+		printf("id: %d * %s * pre√ßo: R$ %.2f\n", produtos[i].id, produtos[i].nome, produtos[i].preco);
 	}
 
 	char resposta;
@@ -776,7 +777,7 @@ void lojaPet() {
 				printf("-> Deseja adicionar mais um?? [s/n]: ");
 				scanf(" %c", &adicionarMais);
 			} else {
-				printf("\033[31mID de produto inv·lido!\033[0m\n");
+				printf("\033[31mID de produto inv√°lido!\033[0m\n");
 				adicionarMais = 's';
 			}
 		} while (adicionarMais == 's' || adicionarMais == 'S');
@@ -784,14 +785,14 @@ void lojaPet() {
 		printf("\033[38;5;208mSeus produtos foram reservados em nossa loja!\033[0m\n");
 		printf("\nSEUS PRODUTOS:\n");
 		for (int i = 0; i < quantidadeProdutosSelecionados; i++) {
-			printf("id: %d * nome: %s * preÁo: R$ %.2f\n", produtosSelecionados[i].id, produtosSelecionados[i].nome, produtosSelecionados[i].preco);
+			printf("id: %d * nome: %s * pre√ßo: R$ %.2f\n", produtosSelecionados[i].id, produtosSelecionados[i].nome, produtosSelecionados[i].preco);
 		}
 
 		printf("Valor total a pagar: R$ %.2f\n\n", valorTotal);
 
 		int opcao;
 		while (1) {
-			printf("Deseja pagar em [1] dinheiro [2] crÈdito [3] dÈbito [4] pix \nopÁ„o: ");
+			printf("Deseja pagar em [1] dinheiro [2] cr√©dito [3] d√©bito [4] pix \nop√ß√£o: ");
 			scanf("%d", &opcao);
 
 			if (opcao >= 1 && opcao <= 4) {
@@ -801,7 +802,7 @@ void lojaPet() {
 				break;
 
 			} else {
-				printf("\033[31mDigite uma opÁ„o de pagamento v·lida!\033[0m\n");
+				printf("\033[31mDigite uma op√ß√£o de pagamento v√°lida!\033[0m\n");
 				Sleep(1000);
 			}
 		}
@@ -836,12 +837,12 @@ int main() {
 
 		printf("       PETSHOP MENU \n");
 		printf("==========================\n");
-		printf("[1] Check-up Veterin·rio \n");
+		printf("[1] Check-up Veterin√°rio \n");
 		printf("[2] Agendar Banho \n");
 		printf("[3] Loja: Claw & Paw \n");
 		printf("[0] Sair \n");
 		printf("========================== \n");
-		printf("digite a opÁ„o:");
+		printf("digite a op√ß√£o:");
 		scanf("%d", &continuar);
 
 		switch(continuar) {
@@ -863,7 +864,7 @@ int main() {
 				break;
 
 			default:
-				printf("\n\033[31mDigite uma opÁ„o v·lida!\033[0m\n\n");
+				printf("\n\033[31mDigite uma op√ß√£o v√°lida!\033[0m\n\n");
 				Sleep(1000);
 		}
 
