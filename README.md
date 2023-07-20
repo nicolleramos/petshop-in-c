@@ -5,6 +5,8 @@ Este é  meu primeiro projeto desenvolvido como parte dos meus estudos em lingua
 
 No arquivo "Software.md", você pode visualizar como usar e inserir dados em cada etapa do software! As imagens demonstram como interagir com o sistema, desde o agendamento de banhos até a utilização da loja de pets e agendamento de consultas veterinárias.
 
+![cat](https://github.com/nicolleramos/petshop-in-c/assets/138618201/a1f8f675-9a6a-4b2b-b376-8b510ee74a2e)
+
 ## Funcionalidades
 Criei as seguintes funcionalidades:
 - **Agendamento de Banhos:** Permite aos clientes agendar banhos para seus animais de estimação.
